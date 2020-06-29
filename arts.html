@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>TOP STORIES - WORLD</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="xam.css">
+    </head>
+    <body>
+        <div class="header">
+            <nav class="navi">
+                <a class="home" href="#">Arts</a>
+            </nav>
+        </div>
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    </body>
+</html>
+<script>
+    
+var container = document.createElement("div");
+container.className = "row justify-content-center";
+document.body.appendChild(container);
+
+
+fetch("https://api.nytimes.com/svc/topstories/v2/arts.json?api-key=YMO6t2yx6ovx0homyfivviA1eBD8IuSg")
+.then(res => res.json())
+.then(data => init(data))
+
+
+function init(lst){
+    var res = lst;
+    for(let i=0; i<res.results.length; i++){
+        console.log(res)
+
+        var insider = document.createElement("div");
+        insider.id = "insider";
+        insider.className = "card col-md-5 m-2 p-4 align-middle overflow-auto";
+        container.appendChild(insider);
+
+        var tile = document.createElement("div");
+        tile.className = "cards";
+        insider.appendChild(tile);
+
+        var left = document.createElement("div");
+        left.className = "left";
+        tile.appendChild(left);
+
+        var section = document.createElement("div");
+        section.id = "section";
+        left.appendChild(section);
+        section.append(res.results[i].section);
+
+        var title = document.createElement("div");
+        title.className = "title h3";
+        left.appendChild(title);
+        title.append(res.results[i].title);
+
+        var date = document.createElement("div");
+        date.id = "date";
+        left.appendChild(date);
+        var d = new Date(res.results[i].created_date);
+        var months = ["JAN","FEB","MAR","APRIL","MAY","JUN","JUL","AUG","SEP","OCT","NOV", "DEC"]
+        date.append(d.getDate()+" "+months[d.getMonth()]);
+
+        var abstract = document.createElement("div");
+        abstract.className = "abstract mb-2";
+        left.appendChild(abstract);
+        abstract.append(res.results[i].abstract);
+
+
+        var byline = document.createElement("div");
+        byline.className = "byline mb-2 font-weight-bold";
+        left.appendChild(byline);
+        byline.append(res.results[i].byline)
+
+        var info = document.createElement("div");
+        info.id = "info";
+        left.appendChild(info);
+        var lnk = document.createElement("a");
+        info.appendChild(lnk);
+        lnk.append("Continue Reading");
+        lnk.href = res.results[i].url;
+        lnk.target = "_blank";
+
+
+        var right = document.createElement("div");
+        right.className = "right float-right";
+        tile.appendChild(right);
+
+        var img = document.createElement("img");
+        img.id = "img";
+        img.className = "card-img-top rounded mt-4"
+        img.src = res.results[i].multimedia[4].url;
+        img.alt = "image";
+        right.appendChild(img);
+
+
+        
+
+            }
+}
+
+
+
+function hide(e){
+    var ret = document.getElementById("btn");
+    var opt = document.getElementById("more");
+    opt.classList.add("show");
+    ret.addEventListener('click', function(){window.location.reload()});
+
+}
+
+var ret = document.getElementById("btn");
+ret.addEventListener('click', hide);
+
+
+
+</script>

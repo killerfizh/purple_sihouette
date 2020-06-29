@@ -1,0 +1,129 @@
+body{
+    background: linear-gradient(150deg,  rgb(38, 38, 59) 15%, #374881 70%, #1c1c44 94%);
+}
+
+.card{
+    box-shadow: 0 0 10px 0 dodgerblue;
+}
+
+.left, .right{
+    position: relative;
+    width: 50%;
+    float: left;
+}
+
+#section{
+    color: dodgerblue;
+}
+
+#img{
+    height: 120px;
+}
+
+.right{
+    background: whitesmoke;
+    height: 450px;
+    justify-content: center;
+    line-height: 390px;
+}
+
+.navi{
+    margin-top: 30px;
+    margin-bottom: 30px;
+    position: relative;
+    width: 100%;
+    top: 0;
+    z-index: 1;
+}
+
+.navi-right{
+    float: right;
+    padding-right: 10%;
+
+}
+
+.navi .home{
+    text-decoration: none;
+    font-size: 40px;
+    padding-left: 60px;
+    font-family: 'Poppins', sans-serif;
+    text-transform: uppercase;
+    color: white;
+}
+
+.navi .home:hover{
+    transition-duration: 0.6s;
+    color: dodgerblue;
+}
+
+.navi-right a{
+    text-decoration: none;
+    color: dodgerblue;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    
+  
+}
+.more.show{
+    position: absolute;
+    right: 0;
+    background: white;
+    margin-top: 10px;
+    width: 200px;
+    height: 600px;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    align-items: center;
+    list-style: none;
+    border-radius: 5px;
+   
+}
+
+.more{
+    display: none;
+}
+
+.navi-right li{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;   
+  
+}
+
+.navi-right li:hover{
+    background-color: grey;
+}
+
+#date{
+    color: grey;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+#info{
+    margin-top: 40px;
+    font-size: 20px;
+}
+
+#info a:hover{
+    text-decoration: none;
+    border: 2px solid dodgerblue;
+    padding: 10px;
+    transition-duration: 0.6s;
+}
+
+#btn{
+    font-size: 25px;
+    background: none;
+    border: 2px solid dodgerblue;
+    color: white;
+}
+
+#btn:hover{
+    transition-duration: 0.6s;
+    border-color: white;
+    color: dodgerblue;
+}
